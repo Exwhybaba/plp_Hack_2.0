@@ -1,0 +1,125 @@
+   *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      display: flex;
+      background: #f4f6f9;
+    }
+
+  
+  
+  /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background: #1e1e2d; /* Dark navy (dim black/blue) */
+      color: #fff;
+      height: 100vh;
+      position: fixed;
+      transition: width 0.3s;
+      overflow: hidden;
+    }
+
+    .sidebar.collapsed {
+      width: 70px;
+    }
+
+    .sidebar .logo {
+      text-align: center;
+      padding: 1rem;
+      font-size: 1.3rem;
+      font-weight: bold;
+      background: #11111b; /* darker */
+    }
+
+    .sidebar ul {
+      list-style: none;
+      margin-top: 2rem;
+    }
+
+    .sidebar ul li {
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .sidebar ul li:hover {
+      background: #2a2a40;
+    }
+
+    .sidebar ul li i {
+      min-width: 25px;
+      text-align: center;
+    }
+
+    /* Sidebar collapsed text hidden */
+    .sidebar.collapsed ul li span {
+      display: none;
+    }
+
+    /* Main content */
+    .main-content {
+      margin-left: 250px;
+      padding: 2rem;
+      width: 100%;
+      transition: margin-left 0.3s;
+    }
+
+    .sidebar.collapsed ~ .main-content {
+      margin-left: 70px;
+    }
+
+    /* Topbar */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .topbar h1 {
+      font-size: 1.5rem;
+      color: #1e1e2d;
+    }
+
+    .toggle-btn {
+      font-size: 1.2rem;
+      cursor: pointer;
+      background: #1e1e2d;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 5px;
+    }
+
+    /* Cards */
+    .cards {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      flex: 1 1 calc(25% - 20px);
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      min-width: 220px;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #777;
+    }

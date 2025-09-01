@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}All Reports{% endblock %}
+
+{% block content %}
+<h2>All Reports</h2>
+
+{% if feeds %}
+  <div class="table-wrap">
+    <table class="nice-table">
+      <thead>
+        <tr>
+          <th>Feed</th>
+          <th>Code</th>
+          <th>Date</th>
+          <th>Amount</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for f in feeds %}
+          <tr>
+            <td>{{ f.feed_name or "-" }}</td>
+            <td>{{ f.feed_code or "-" }}</td>
+            <td>{{ f.report_date or "-" }}</td>
+            <td>{{ f.amount or "-" }}</td>
+            <td><a class="small-link" href="{{ url_for('view_report', report_id=f.id) }}">Open</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% else %}
+  <p class="muted">No reports available yet.</p>
+{% endif %}
+{% endblock %}

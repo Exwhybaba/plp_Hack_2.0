@@ -1,0 +1,134 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const section = document.querySelector(".section-1");
+
+    const images = [
+        "static/img/brown-chickens-farm.jpg", // already visible in CSS
+        "static/img/b-cole-tZDQqzD3EqI-unsplash.jpg",
+        "static/img/muhammad-qasim-ali-NddUYwQ_7xI-unsplash.jpg",
+        "static/img/tattooed-roaster-hand-holds-metal-scoop-with-raw-fresh-green-coffee-beans-plastic-basket.jpg",
+    ];
+
+    let index = 0;
+
+    // Preload images
+    images.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+
+    // Start slideshow (begin with 2nd image, not blank)
+    setInterval(() => {
+        index = (index + 1) % images.length;
+        section.style.backgroundImage = `url('${images[index]}')`;
+    }, 3000);
+});
+
+
+// script.js - single clean modal + signup handler (client validation)
+// Put this file in your project and make sure index.html loads it once at the end.
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Elements
+  const loginBtn = document.querySelector('.login-btn');
+  const signupBtn = document.querySelector('.signup-btn');
+  const loginModal = document.getElementById('login-modal');
+  const signupModal = document.getElementById('signup-modal');
+  const closeButtons = document.querySelectorAll('.modal .close');
+
+  // Helpers
+  function openModal(modal) {
+    if (!modal) return;
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
+    const input = modal.querySelector('input');
+    if (input) input.focus();
+  }
+  function closeModal(modal) {
+    if (!modal) return;
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+  }
+
+  // Wire open buttons (guard in case element missing)
+  if (loginBtn && loginModal) {
+    loginBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(loginModal);
+    });
+  }
+  if (signupBtn && signupModal) {
+    signupBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(signupModal);
+    });
+  }
+
+  // Wire close buttons
+  closeButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const modal = e.target.closest('.modal');
+      closeModal(modal);
+    });
+  });
+
+  // Click outside to close
+  window.addEventListener('click', (e) => {
+    if (e.target && e.target.classList && e.target.classList.contains('modal')) {
+      closeModal(e.target);
+    }
+  });
+
+  // ESC key closes open modal
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      [loginModal, signupModal].forEach(m => {
+        if (m && m.style.display === 'flex') closeModal(m);
+      });
+    }
+  });
+
+  // Signup form validation and optional AJAX submit
+  const signupForm = document.getElementById('signup-form');
+  if (signupForm) {
+    signupForm.addEventListener('submit', async (e) => {
+      // client-side check (password match)
+      const pw = signupForm.querySelector('[name="password"]').value;
+      const cpw = signupForm.querySelector('[name="confirm_password"]').value;
+      if (pw !== cpw) {
+        e.preventDefault();
+        alert('Passwords do not match — please check and try again.');
+        signupForm.querySelector('[name="password"]').focus();
+        return;
+      }
+
+      // ---- NORMAL SUBMIT (recommended for beginners) ----
+      // If you have a server route at /signup this will POST the form normally.
+      // If you want AJAX instead (no reload), uncomment the block below.
+
+      /*
+      e.preventDefault();
+      const fd = new FormData(signupForm);
+      const payload = Object.fromEntries(fd.entries());
+      try {
+        const resp = await fetch(signupForm.action || '/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const json = await resp.json();
+        if (resp.ok) {
+          alert(json.message || 'Signup successful');
+          signupForm.reset();
+          closeModal(signupModal);
+        } else {
+          alert(json.error || 'Signup failed. Check inputs or try a different username/email.');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Network/server error. See console for details.');
+      }
+      */
+    });
+  }
+});
+// End of script.js

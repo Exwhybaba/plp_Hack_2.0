@@ -1,0 +1,96 @@
+/* ===== General ===== */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    background: #f9f6f2;
+    color: #3e2723;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+    width: 220px;
+    background: #5d4037; /* dark brown */
+    color: #fff;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.3rem;
+    color: #f1c40f; /* yellow highlight */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px;
+}
+
+.sidebar ul li a {
+    color: #f9f6f2;
+    text-decoration: none;
+    display: block;
+    transition: background 0.2s, color 0.2s;
+}
+
+.sidebar ul li a:hover {
+    background: #8d6e63; /* medium brown */
+    color: #f1c40f;
+}
+
+/* ===== Main Content ===== */
+.main-content {
+    margin-left: 220px;
+    padding: 20px;
+    flex: 1;
+    background: #f9f6f2;
+    min-height: 100vh;
+}
+
+header {
+    background: #f1c40f; /* yellow */
+    color: #3e2723;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+header h1 {
+    margin: 0;
+}
+
+header p {
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ===== Cards ===== */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.2s;
+    border-top: 4px solid #f1c40f;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}

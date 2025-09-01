@@ -1,0 +1,154 @@
+/* ---------------- DASHBOARD ---------------- */
+.dash-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+.dash-hero-left {
+  flex: 1.2;
+}
+
+.dash-hero-left h1 {
+  font-size: 2rem;
+  color: var(--brand);
+  margin-bottom: 0.5rem;
+}
+
+.dash-hero-left .muted {
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.profile-summary {
+  background: rgba(255, 250, 235, 0.6);
+  padding: 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.profile-summary p {
+  margin: 0.2rem 0;
+  color: var(--brand);
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--brand);
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: var(--shadow);
+  transition: background 0.2s ease;
+}
+.btn-primary:hover {
+  background: #3a2016;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--brand);
+  color: var(--brand);
+  padding: 0.7rem 1.2rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: bold;
+}
+.btn-ghost:hover {
+  background: var(--accent);
+  color: var(--brand);
+}
+
+.dash-hero-right {
+  flex: 0.8;
+  display: grid;
+  gap: 1rem;
+}
+
+.card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+}
+
+.small-card h3 {
+  margin-top: 0;
+  font-size: 1rem;
+  color: var(--brand);
+}
+
+.small-card .card-body {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--brand);
+}
+
+/* ---------------- REPORTS TABLE ---------------- */
+.reports {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.reports h2 {
+  color: var(--brand);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.nice-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.nice-table th, .nice-table td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.nice-table th {
+  background: rgba(255, 211, 61, 0.2); /* soft yellow */
+  font-weight: bold;
+  color: var(--brand);
+}
+
+.nice-table tr:nth-child(even) {
+  background: rgba(44, 24, 16, 0.03);
+}
+
+.small-link {
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: bold;
+}
+.small-link:hover {
+  text-decoration: underline;
+}
+
+/* ---------------- MUTED TEXT ---------------- */
+.muted {
+  color: var(--muted);
+  font-size: 0.9rem;
+}

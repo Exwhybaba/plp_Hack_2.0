@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedeyes-Smart least-cost formulator</title>
+    <link rel="stylesheet" href="static/styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+     <!-- Font Awesome for social icons -->
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" 
+        integrity="sha512-..." 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer"
+    />
+</head>
+<body>
+    <div class="container">
+
+        <div class="header">
+            <div id = "head-1">
+                <p>Feedeyes — the smart feed formulation tool for animal nutritionists! Optimize diets, reduce costs, and maximize performance.</p>
+
+            </div>
+
+            <div id= "head-2">
+                <div class="wisely">
+                    <h1>Feedeyes</h1>
+                    <p>Smart Feed Formulation</p>
+                </div>
+
+                <div class="search-box">
+                    <input type="text" placeholder="🔍 Search Feedeyes for what you are looking for ...">
+                </div>
+
+
+                <div class="dummies-btn">
+                    <button>Try Feedeyes AI</button>
+                </div>
+
+            </div>
+
+            <div id="head-3">
+                <nav class="navbar">
+                    <ul>
+                        <li><a href="#section-1">Home</a></li>
+                        <li><a href="#Key-features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#footer">Contact</a></li>
+                    </ul>
+                    <div class="nav-auth">
+                        <button class="login-btn btn">Login</button>
+                        <button class="signup-btn btn ghost">Sign Up</button>
+                    </div>
+                </nav>
+            </div>
+
+
+        </div>
+
+        <div id= "section-1" class="section-1">
+            <h1>Optimize Animal Feed Costs</h1>
+            <p>AI-powered nutrition for poultry & swine</p>
+
+        </div>
+
+        <!-- SECTION 2: Hero descriptive area (left of hero/formulator) -->
+        <section class="section-2" id="section-2">
+        <div class="section-2-inner">
+
+            <!-- HERO CARD (left) -->
+            <div id="descript" class="hero-card" role="region" aria-labelledby="hero-title">
+            <div class="card-1">
+                <h1 id="hero-title">
+                Design High-performance Diets<br>
+                <span class="muted">lower feed costs with Feedeyes</span>
+                </h1>
+                <p class="lead">
+                Phase-specific feed formulation for nutritionists, farmers & feed mills.
+                Editable ingredient database, AFEX price sync, exportable reports.
+                </p>
+            </div>
+
+            <div class="btn-2">
+                <button class="btn primary" id="try-ai" aria-label="Try Feedeyes AI">Try Feedeyes AI</button>
+
+                <button class="watch-demo-btn btn ghost" id="watch-demo" aria-label="Watch demo">
+                <span class="video-thumb" aria-hidden>
+                    <video width="120" height="70" muted playsinline>
+                    <source src="demo.mp4" type="video/mp4">
+                    </video>
+                </span>
+                <span class="watch-text">Watch Demo</span>
+                </button>
+            </div>
+
+            <div class="kpis" aria-hidden="true">
+                <span class="pill">Faster formulation</span>
+                <span class="pill">AFEX sync</span>
+                <span class="pill">Editable database</span>
+            </div>
+            </div>
+
+            <!-- NEW: INFO CARD (right or below on mobile) -->
+            <div class="info-card" role="region" aria-labelledby="info-title">
+            <div class="info-header">
+                <h3 id="info-title">Manage Source Data & Reports</h3>
+                <div class="small muted">Control your ingredients, prices & exports</div>
+            </div>
+
+            <p class="info-lead muted">
+                Keep your ingredient database accurate and traceable. Import lab values, update market prices,
+                and generate exportable reports (PDF / Word) for audits or supplier communication.
+            </p>
+
+            <ul class="info-list">
+                <li class="info-item"><strong>Add & edit ingredients</strong> — name, category, supplier notes.</li>
+                <li class="info-item"><strong>Edit nutrient values</strong> — CP, ME, Ca, P, vitamins and minerals.</li>
+                <li class="info-item"><strong>Update prices</strong> — manual or AFEX sync for live market rates.</li>
+                <li class="info-item"><strong>Import / Export</strong> — CSV import and snapshot exports for traceability.</li>
+            </ul>
+
+            <div class="info-cta">
+                <button class="btn" id="open-source" aria-label="Open Source Data">Open Source Data</button>
+                <button class="btn ghost" id="sample-report" aria-label="View sample report">View Sample Report</button>
+            </div>
+            </div>
+
+        </div>
+        </section>
+
+
+        <!-- ASIDE: Quick Formulator preview (right) -->
+        <aside class="aside" id="quick-formulator" aria-labelledby="formulator-title" role="complementary">
+        <div class="form-card">
+            <div class="form-header">
+            <h3 id="formulator-title">Quick Formulator — Preview</h3>
+            <div class="muted small">Mini workflow: Part 1 → Part 2</div>
+            </div>
+
+            <form id="preview-form" class="preview-form" onsubmit="return false;" aria-describedby="form-instructions">
+            <div id="form-instructions" class="sr-only">Select phase, enter bird count, choose ingredients and adjust quantities. Normalize to 100 parts before exporting.</div>
+
+            <label for="phase-select">Select Bird Phase</label>
+            <select id="phase-select" aria-label="Select bird phase">
+                <option value="pre-starter">Pre-Starter</option>
+                <option value="starter" selected>Starter</option>
+                <option value="grower">Grower</option>
+                <option value="finisher">Finisher</option>
+            </select>
+
+            <label for="bird-count"># of birds</label>
+            <input id="bird-count" type="number" min="1" step="1" placeholder="e.g. 500" aria-label="Number of birds" value="500">
+
+            <label for="ingredient-select">Ingredients (add)</label>
+            <div class="ingredient-row">
+                <select id="ingredient-select" aria-label="Choose ingredient to add">
+                <option value="maize" data-cp="8.5" data-price="140">Maize</option>
+                <option value="soya" data-cp="44" data-price="420">Soya</option>
+                <option value="fishmeal" data-cp="60" data-price="900">Fishmeal</option>
+                <option value="vitpremix" data-cp="0" data-price="3000">Vitamin Premix</option>
+                </select>
+                <button class="btn small" id="add-ingredient" aria-label="Add ingredient">Add</button>
+            </div>
+
+            <!-- preview table -->
+            <div class="table-wrap" role="region" aria-labelledby="formulator-title">
+                <table class="preview-table" id="preview-table" role="grid" aria-readonly="false">
+                <thead>
+                    <tr>
+                    <th>Ingredient</th>
+                    <th>Qty (parts)</th>
+                    <th>Price / kg</th>
+                    <th>Amount</th>
+                    <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- sample rows preloaded -->
+                    <tr data-id="maize">
+                    <td class="ing-name">Maize</td>
+                    <td><input class="cell-qty" type="number" min="0" step="0.1" value="30" aria-label="Maize quantity in parts"></td>
+                    <td><input class="cell-price" type="number" min="0" step="0.01" value="140" aria-label="Maize price per kg"></td>
+                    <td class="cell-amount" aria-live="polite">4200</td>
+                    <td><button class="btn small danger remove-row" aria-label="Remove Maize">×</button></td>
+                    </tr>
+
+                    <tr data-id="soya">
+                    <td class="ing-name">Soya</td>
+                    <td><input class="cell-qty" type="number" min="0" step="0.1" value="20" aria-label="Soya quantity in parts"></td>
+                    <td><input class="cell-price" type="number" min="0" step="0.01" value="420" aria-label="Soya price per kg"></td>
+                    <td class="cell-amount" aria-live="polite">8400</td>
+                    <td><button class="btn small danger remove-row" aria-label="Remove Soya">×</button></td>
+                    </tr>
+
+                    <tr data-id="fishmeal">
+                    <td class="ing-name">Fishmeal</td>
+                    <td><input class="cell-qty" type="number" min="0" step="0.1" value="5" aria-label="Fishmeal quantity in parts"></td>
+                    <td><input class="cell-price" type="number" min="0" step="0.01" value="900" aria-label="Fishmeal price per kg"></td>
+                    <td class="cell-amount" aria-live="polite">4500</td>
+                    <td><button class="btn small danger remove-row" aria-label="Remove Fishmeal">×</button></td>
+                    </tr>
+
+                    <tr data-id="vitpremix">
+                    <td class="ing-name">Vitamin Premix</td>
+                    <td><input class="cell-qty" type="number" min="0" step="0.01" value="0.2" aria-label="Vitamin Premix quantity in parts"></td>
+                    <td><input class="cell-price" type="number" min="0" step="0.01" value="3000" aria-label="Vitamin Premix price per kg"></td>
+                    <td class="cell-amount" aria-live="polite">600</td>
+                    <td><button class="btn small danger remove-row" aria-label="Remove Vitamin Premix">×</button></td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+
+            <!-- totals and actions -->
+            <div class="totals-row" aria-live="polite">
+                <div class="total-left">
+                <div>Total parts: <strong id="total-parts">55.2</strong></div>
+                <div class="muted small">Tip: Total must equal 100 before full analysis.</div>
+                </div>
+
+                <div class="total-actions">
+                <button class="btn" id="normalize-btn" aria-label="Normalize to 100 parts">Normalize to 100</button>
+                <button class="btn ghost" id="open-full" aria-label="Open full formulator">Open full formulator</button>
+                <button class="btn ghost" id="export-sample" aria-label="Export sample report">Export sample report</button>
+                </div>
+            </div>
+
+            <!-- cost summary -->
+            <div class="cost-summary muted small" id="cost-summary">Estimated total cost: ₦ 17700</div>
+            </form>
+        </div>
+        </aside>
+
+        <div id= "Key-features" class="section-3">
+            <h1>Key Features</h1>
+            <div class="features">
+                <div class="part-1">
+                    <i class="fas fa-robot feature-icon"></i>
+                    <h2>AI-powered Feed Formulation</h2>
+                    <hr>
+                    <p>Automates least-cost diet formulation for<br>
+                    poultry, swine, and ruminants using<br>
+                    species-, age-, and phase-specific models.</p>
+                </div>
+
+                <div class="part-2">
+                    <i class="fas fa-database feature-icon"></i>
+                    <h2>Real-time Ingredient & Price Sync</h2>
+                    <hr>
+                    <p>Stay up to date with AFEX or manual<br>
+                    database updates, ensuring formulations<br>
+                    match the actual market costs.</p>
+                </div>
+
+                <div class="part-3">
+                    <i class="fas fa-chart-line feature-icon"></i>
+                    <h2>Comprehensive Reporting & Analytics</h2>
+                    <hr>
+                    <p>Gain insights into formulation performance, cost<br>
+                    analysis, and ingredient utilization with our<br>
+                    built-in reporting tools.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div id= "how-it-works" class="section-5">
+            <h2>How it Works</h2>
+            <div class="timeline">
+                <div class="step">
+                <h3>1. Select Phase & Ingredients</h3>
+                <p>Choose the animal species, growth phase, and select from available ingredients.</p>
+                </div>
+                <div class="step">
+                <h3>2. Formulate & Match Requirements</h3>
+                <p>Our AI-powered system balances nutrients and cost to generate optimized feed.</p>
+                </div>
+                <div class="step">
+                <h3>3. Report & AFEX</h3>
+                <p>Generate reports and sync prices directly with AFEX or manual inputs.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <section class="deep-dive">
+            <h2>Deep Dive</h2>
+            <div class="accordion">
+                <details>
+                <summary>Formulation Table</summary>
+                <p>Detailed table showing ingredient quantities, prices, and total costs.</p>
+                </details>
+                <details>
+                <summary>Nutrient Requirements</summary>
+                <p>Species- and phase-specific requirements for CP, ME, vitamins, and minerals.</p>
+                </details>
+                <details>
+                <summary>Vitamin & Mineral Requirements</summary>
+                <p>Customizable requirements for vitamins and microminerals across species.</p>
+                </details>
+                <details>
+                <summary>Source Data (ingredient DB)</summary>
+                <p>Live ingredient composition database with nutritional and pricing data.</p>
+                </details>
+            </div>
+            </section>
+
+        <section class="report-afex">
+            <h2>Reports & Market Prices</h2>
+            <div class="columns">
+                
+                <!-- Left Column -->
+                <div class="report-preview">
+                <h3>Report Preview</h3>
+                <div class="feed-analysis">
+                    <h4>Feed Analysis Table</h4>
+                    <table>
+                    <thead>
+                        <tr><th>Ingredient</th><th>Qty</th><th>Cost</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Corn</td><td>50kg</td><td>$20</td></tr>
+                        <tr><td>Soybean Meal</td><td>25kg</td><td>$15</td></tr>
+                    </tbody>
+                    </table>
+                </div>
+
+                <div class="nutrient-composition">
+                    <h4>Nutrient Composition</h4>
+                    <ul>
+                    <li>CP: 22%</li>
+                    <li>ME: 2900 kcal/kg</li>
+                    <li>Ca: 1.0%</li>
+                    </ul>
+                </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="afex-widget">
+                <h3>AFEX Market Widget</h3>
+                <table>
+                    <thead>
+                    <tr><th>Commodity</th><th>Price/kg</th><th>Change</th></tr>
+                    </thead>
+                    <tbody>
+                    <tr><td>Maize</td><td>$0.40</td><td>+2%</td></tr>
+                    <tr><td>Soybean Meal</td><td>$0.55</td><td>-1%</td></tr>
+                    </tbody>
+                </table>
+                <div class="buttons">
+                    <button>Connect to AFEX</button>
+                    <button>Sync Prices</button>
+                </div>
+                </div>
+
+            </div>
+        </section>
+
+        
+
+        <section id="pricing" class="pricing">
+            <h2>Pricing Plans</h2>
+            <div class="plans">
+                <div class="plan">
+                <h3>Free</h3>
+                <p>Basic formulation tools with limited ingredients.</p>
+                </div>
+                <div class="plan">
+                <h3>Pro</h3>
+                <p>Advanced formulation, AFEX sync, and reporting tools.</p>
+                </div>
+                <div class="plan">
+                <h3>Enterprise</h3>
+                <p>Custom solutions, dedicated support, and premium integrations.</p>
+                </div>
+            </div>
+            <div class="cta-buttons">
+                <button>Create Account</button>
+                <button>Contact Sales</button>
+            </div>
+        </section>
+
+
+        <footer id= "footer" class="footer">
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Quick Links</a>
+                <a href="#">Legal</a>
+                <a href="mailto:hello@feedeyes.example">Contact</a>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
+            <p>&copy; 2025 FeedEyes. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+
+    <!-- LOGIN MODAL -->
+    <div id="login-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="login-title">
+        <div class="modal-content">
+            <button class="close" aria-label="Close login modal">&times;</button>
+            <h2 id="login-title">Login</h2>
+            <form id="login-form" method="POST" action="/login">
+            <input type="text" name="username" placeholder="Enter username" required>
+            <input type="password" name="password" placeholder="Enter password" required>
+            <button type="submit" class="btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SIGNUP MODAL -->
+    <div id="signup-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="signup-title">
+        <div class="modal-content">
+            <button class="close" aria-label="Close signup modal">&times;</button>
+            <h2 id="signup-title">Sign Up</h2>
+            <form id="signup-form" method="POST" action="/signup">
+            <input type="text" name="username" placeholder="Enter username" required>
+            <input type="email" name="email" placeholder="Enter email" required>
+            <input type="password" name="password" placeholder="Enter password" required>
+            <input type="password" name="confirm_password" placeholder="Confirm password" required>
+            <button type="submit" class="btn">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+
+   <script src="static/scripts/script.js"></script>
+
+</body>
+</html>

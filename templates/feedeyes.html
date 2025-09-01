@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FeedEyes — MVP Mockup</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root{--brand:#2aa7a0;--muted:#f7f9fb}
+    body{background:var(--muted);font-family:Inter,system-ui,Arial,sans-serif;color:#111}
+    .topbar{background:linear-gradient(90deg,var(--brand),#19b3a9);color:#fff;padding:18px;border-radius:8px}
+    .app-title{font-weight:800;letter-spacing:1px}
+    .kpi{background:#fff;border-radius:8px;padding:12px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+    .kpi h6{font-size:12px;margin:0;color:#666}
+    .kpi .value{font-size:18px;font-weight:700}
+    .sidebar{background:#fff;padding:16px;border-radius:8px}
+    .card-slim{background:#fff;border-radius:8px;padding:12px;margin-bottom:12px}
+    .btn-opt{background:var(--brand);color:#fff;border:none}
+    .table-fixed{max-height:360px;overflow:auto;background:#fff;padding:12px;border-radius:8px}
+    .report-card{background:#fff;padding:12px;border-radius:8px}
+    label.small{font-size:12px;color:#333}
+    .muted-note{font-size:13px;color:#666}
+    footer{margin-top:18px;font-size:12px;color:#666}
+    @media (max-width: 992px){
+      .kpi-row .col{margin-bottom:10px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container my-4">
+    <div class="topbar d-flex align-items-center justify-content-between">
+      <div>
+        <div class="app-title">FEEDEYES</div>
+        <div class="muted-note">Poultry feed least-cost formulation — MVP</div>
+      </div>
+      <div class="d-flex gap-3 kpi-row">
+        <div class="kpi me-2">
+          <h6>ME/CP (KG)</h6>
+          <div class="value">0</div>
+        </div>
+        <div class="kpi me-2">
+          <h6>TOTAL COST</h6>
+          <div class="value">0</div>
+        </div>
+        <div class="kpi me-2">
+          <h6>COST / 25kg</h6>
+          <div class="value">0</div>
+        </div>
+        <div class="kpi">
+          <h6>FEED REQ.</h6>
+          <div class="value">0</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4 g-3">
+      <!-- Sidebar -->
+      <div class="col-lg-3">
+        <div class="sidebar">
+          <h5>Bird Specifications</h5>
+          <div class="mb-3">
+            <label class="small">Strain</label>
+            <select class="form-select">
+              <option>Ross 308</option>
+              <option>Cobb 500</option>
+              <option>Arbor Acres Plus</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="small">Feed Phase</label>
+            <select class="form-select">
+              <option>Starter</option>
+              <option>Grower</option>
+              <option>Finisher</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="small">Number of birds</label>
+            <input type="number" class="form-control" placeholder="Enter number" />
+          </div>
+
+          <div class="mb-3">
+            <label class="small">Ingredients</label>
+            <select multiple class="form-select" style="height:120px">
+              <option>MAIZE</option>
+              <option>SOY BEAN MEAL 46%</option>
+              <option>WHEAT</option>
+              <option>FISH MEAL</option>
+            </select>
+            <div class="form-text">(multi-select)</div>
+          </div>
+
+          <div class="d-grid gap-2">
+            <button class="btn btn-outline-secondary">Add Ingredient</button>
+            <button class="btn btn-opt">Optimize Feed</button>
+          </div>
+        </div>
+
+        <div class="card-slim mt-3">
+          <h6 class="mb-2">Solver</h6>
+          <select class="form-select">
+            <option>CBC (Recommended)</option>
+            <option>GLPK</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Main -->
+      <div class="col-lg-5">
+        <div class="table-fixed">
+          <h5>Feed Formulation</h5>
+          <table class="table table-sm table-hover">
+            <thead class="table-light">
+              <tr>
+                <th>Ingredient</th>
+                <th>Qty (kg)</th>
+                <th>Price/kg</th>
+                <th>ME</th>
+                <th>CP</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>MAIZE</td>
+                <td>0</td>
+                <td>0.00</td>
+                <td>2800</td>
+                <td>8.5</td>
+              </tr>
+              <tr>
+                <td>SOY BEAN MEAL 46%</td>
+                <td>0</td>
+                <td>0.00</td>
+                <td>2500</td>
+                <td>46.0</td>
+              </tr>
+              <tr class="table-secondary">
+                <td><strong>Total</strong></td>
+                <td><strong>0</strong></td>
+                <td><strong>0.00</strong></td>
+                <td><strong>—</strong></td>
+                <td><strong>—</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-3 d-flex gap-2">
+          <button class="btn btn-primary">Optimize</button>
+          <button class="btn btn-outline-primary">Clear</button>
+        </div>
+
+        <div class="mt-3 report-card">
+          <h6>Optimization status</h6>
+          <p class="muted-note">Click Optimize to compute least-cost formula meeting requirements. Messages and sensor outputs will appear here.</p>
+        </div>
+      </div>
+
+      <!-- Right column -->
+      <div class="col-lg-4">
+        <div class="report-card">
+          <h5>Feed Analysis Report</h5>
+          <div style="max-height:180px;overflow:auto;margin-top:8px">
+            <table class="table table-sm">
+              <thead class="table-light"><tr><th>Ingredient</th><th>Qty</th><th>Amount</th></tr></thead>
+              <tbody>
+                <tr><td>MAIZE</td><td>0</td><td>0.00</td></tr>
+                <tr><td>SOY</td><td>0</td><td>0.00</td></tr>
+                <tr class="table-secondary"><td><strong>Total</strong></td><td><strong>0</strong></td><td><strong>0.00</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="d-flex gap-2 mt-2">
+            <button class="btn btn-outline-secondary">Print</button>
+            <button class="btn btn-outline-success">Download .docx</button>
+          </div>
+        </div>
+
+        <div class="report-card mt-3">
+          <h6>Nutrient Composition</h6>
+          <ul class="list-unstyled mt-2">
+            <li>ME: <strong>0</strong></li>
+            <li>CP: <strong>0</strong></li>
+            <li>Fat: <strong>0</strong></li>
+          </ul>
+        </div>
+
+        <div class="card-slim mt-3">
+          <h6>Market</h6>
+          <p class="muted-note">Link to market prices / external data</p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="text-center mt-4">
+      FeedEyes • MVP mockup — built for preview
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedeyes Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Feedeyes Admin</h2>
+        <ul>
+            <li><a href="#"><i class="fas fa-user"></i> Users</a></li>
+            <li><a href="#"><i class="fas fa-drumstick-bite"></i> Feeds</a></li>
+            <li><a href="#"><i class="fas fa-seedling"></i> Ingredients</a></li>
+            <li><a href="#"><i class="fas fa-table"></i> Reports</a></li>
+            <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Welcome, Admin</h1>
+            <p>Manage Feedeyes here</p>
+        </header>
+
+        <section class="cards">
+            <div class="card">
+                <h3>Users</h3>
+                <p>Manage registered users</p>
+            </div>
+            <div class="card">
+                <h3>Feeds</h3>
+                <p>Manage all feed formulations</p>
+            </div>
+            <div class="card">
+                <h3>Ingredients</h3>
+                <p>View & update ingredient database</p>
+            </div>
+            <div class="card">
+                <h3>Reports</h3>
+                <p>Access all reports</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

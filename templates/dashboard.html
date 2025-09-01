@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — {{ user.username }}{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="logo">Feedeyes</div>
+    <ul>
+      <li><a href="{{ url_for('feedeyes') }}"><i class="fas fa-drumstick-bite"></i> <span>Feedeyes</span></a></li>
+      <li><a href="{{ url_for('new_report') }}"><i class="fas fa-file-alt"></i> <span>New Report</span></a></li>
+      <li><a href="{{ url_for('reports') }}"><i class="fas fa-table"></i> <span>Reports</span></a></li>
+      {% if role == 'admin' %}
+      <li><a href="{{ url_for('admin_dashboard') }}"><i class="fas fa-cogs"></i> <span>Admin Panel</span></a></li>
+      {% endif %}
+      <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content" id="main">
+    <div class="topbar">
+      <h1>Welcome back, {{ user.username }}</h1>
+      <div class="toggle-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></div>
+    </div>
+
+    <!-- Cards -->
+    <section class="cards">
+      <div class="card">
+        <h3>Total Reports</h3>
+        <p>{{ feeds|length }}</p>
+      </div>
+      <div class="card">
+        <h3>Last Report</h3>
+        <p>{{ feeds[0].report_date if feeds else "N/A" }}</p>
+      </div>
+      <div class="card">
+        <h3>Quick Actions</h3>
+        <a href="{{ url_for('feedeyes') }}" class="btn-small">+ New Feed</a>
+        <a href="{{ url_for('reports') }}" class="btn-small">View Reports</a>
+      </div>
+    </section>
+
+    <!-- Reports Table -->
+    <section class="reports">
+      <h2>Recent Reports</h2>
+      {% if feeds %}
+      <div class="table-wrap">
+        <table class="nice-table">
+          <thead>
+            <tr>
+              <th>Feed</th>
+              <th>Code</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for f in feeds %}
+            <tr>
+              <td>{{ f.feed_name or "-" }}</td>
+              <td>{{ f.feed_code or "-" }}</td>
+              <td>{{ f.report_date or "-" }}</td>
+              <td>{{ f.amount or "-" }}</td>
+              <td><a href="{{ url_for('view_report', report_id=f.id) }}" class="link">Open</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <p class="muted">You don’t have any reports yet. 
+        <a href="{{ url_for('feedeyes') }}">Create your first feed</a>.
+      </p>
+      {% endif %}
+    </section>
+  </div>
+</div>
+
+<script>
+  function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("collapsed");
+    document.getElementById("main").classList.toggle("collapsed");
+  }
+</script>
+{% endblock %}
