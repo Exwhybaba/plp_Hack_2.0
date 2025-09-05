@@ -166,6 +166,7 @@ html, body {
     background-position: center;
     background-repeat: no-repeat;
     color: #ffffff;
+    background-color: #3b2a1a; /* fallback color */
     display: flex;
     flex-direction: column;
     justify-content: center;
