@@ -777,4 +777,219 @@ html, body {
 }
 
 
-/* dashboard */
+/* ---------------- Mobile / Tablet layout (stacked) ---------------- */
+@media (max-width: 980px) {
+
+  /* Make the whole site single-column and stack the areas */
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "section-1"
+      "section-2"
+      "aside"
+      "section-3"
+      "section-5"
+      "deep-dive"
+      "report-afex"
+      "pricing"
+      "footer";
+    grid-template-rows: auto;
+    gap: 1rem;
+  }
+
+
+
+  /* Header becomes compact & stacked */
+  .header {
+    height: auto;
+    padding: 0.4rem 0;
+  }
+
+  
+
+  /* Top bar: make head-1 compact */
+  #head-1 { height: auto; padding: 0.4rem 0.6rem; }
+  #head-1 p { font-size: 0.95rem; margin: 0; }
+
+  /* Head-2: stack brand / search / CTA vertically */
+  #head-2 {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 0.8rem;
+    height: auto;
+  }
+  .wisely { align-items: center; text-align: center; }
+  .wisely h1 { font-size: 1.6rem; line-height: 1.08; }
+  .wisely p { margin-top: 0; font-size: 0.85rem; }
+
+  /* Search box full width but constrained */
+  .search-box { width: 92%; max-width: 720px; margin: 0.25rem 0; height: auto; }
+  .search-box input { width: 100%; padding: 10px 14px; font-size: 0.95rem; }
+
+  /* CTA button sizing */
+  .dummies-btn { margin-top: 0.2rem; height: auto; padding: 8px 10px; border-radius: 8px; }
+  .dummies-btn button { font-size: 0.95rem; }
+
+  /* Navbar: simpler, centered row that wraps */
+  .navbar { padding: 0.6rem 0.8rem; }
+  .navbar ul { flex-direction: row; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
+  .navbar a { padding-left: 0.6rem; padding-right: 0.6rem; font-size: 1rem; }
+
+  /* HERO: reduce height and text sizes */
+  .section-1 {
+    min-height: 45vh;
+    padding: 1.25rem;
+    background-position: center center;
+  }
+  .section-1 h1 { font-size: 1.6rem; letter-spacing: 1px; }
+  .section-1 p  { font-size: 1rem; margin-top: 0.4rem; }
+
+  /* Slide layer should still be behind content (keeps slide effect) */
+  .section-1::before {
+    left: 100%;              /* keep off-screen to the right start */
+    width: 100%;
+    height: 100%;
+    /* ensure background-image css variable is applied (if your JS uses --next-image) */
+    background-image: var(--next-image);
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* Section-2 & inner cards: full width stacked (already mostly implemented) */
+  .section-2 { padding: 1rem; }
+  .section-2-inner { flex-direction: column; gap: 16px; padding: 0; }
+
+  /* Make aside (formulator) full width under the content */
+  .aside { grid-area: aside; padding: 1rem; display: block; }
+  .form-card { max-width: 100%; width: 100%; }
+
+  /* Table: allow it to fit smaller screens */
+  .table-wrap { overflow-x: auto; }
+  .preview-table { min-width: 320px; width: 100%; }
+
+  /* Features -> single column */
+  .features { grid-template-columns: 1fr; gap: 1rem; margin: 1rem; }
+
+  /* Timeline -> stacked */
+  .timeline { grid-template-columns: 1fr; gap: 1rem; }
+
+  /* Columns in report-afex -> stacked */
+  .columns { grid-template-columns: 1fr; gap: 1rem; padding: 0 1rem; }
+
+  /* Pricing -> single column */
+  .plans { grid-template-columns: 1fr; gap: 1rem; margin: 1rem 0; }
+
+  /* Footer layout tweak */
+  .footer { padding: 1.5rem; text-align: center; }
+  .footer-links { flex-direction: column; gap: 0.6rem; margin-bottom: 0.8rem; }
+  .social-icons { justify-content: center; margin-bottom: 0.6rem; }
+
+  /* Modal (mobile-friendly) */
+  .modal-content { width: 92%; max-width: 420px; padding: 1.4rem; }
+
+  /* Small touches for spacing */
+  .hero-card, .info-card, .form-card { padding: 14px; }
+  .btn { padding: 9px 12px; font-size: 0.95rem; }
+  .pill { font-size: 0.85rem; padding: 6px 8px; }
+
+  /* reduce very large text elements on small screens */
+  h1, h2, h3 { line-height: 1.1; }
+
+}
+
+
+/* Mobile menu toggle button - hidden by default */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #2C1810;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-right: 1rem;
+}
+
+/* Nav menu styling */
+.nav-menu {
+    display: flex;
+}
+
+/* Nav auth buttons styling */
+.nav-auth {
+    display: flex;
+    align-items: center;
+}
+
+/* Mobile styles */
+@media (max-width: 980px) {
+    /* Show the mobile menu toggle */
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    /* Hide the regular nav menu by default */
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        z-index: 1000;
+        display: none;
+    }
+    
+    /* Show the menu when active */
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    /* Adjust navbar layout for mobile */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.6rem 0.8rem;
+    }
+    
+    /* Stack the navigation links vertically */
+    .navbar ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+    }
+    
+    /* Style the navigation links for mobile */
+    .navbar a {
+        padding: 0.8rem 0;
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid #f0f0f0;
+        text-align: center;
+    }
+    
+    /* Remove border from last item */
+    .navbar a:last-child {
+        border-bottom: none;
+    }
+    
+    /* Adjust the nav-auth buttons for mobile */
+    .nav-auth {
+        margin-left: auto;
+    }
+}
+
+
+/* Optional: an extra breakpoint for very small phones */
+@media (max-width: 420px) {
+  .wisely h1 { font-size: 1.35rem; }
+  .search-box input { font-size: 0.9rem; padding: 9px 12px; }
+  .section-1 h1 { font-size: 1.4rem; }
+  .preview-table input.cell-qty, .preview-table input.cell-price { width: 70px; }
+}
+
