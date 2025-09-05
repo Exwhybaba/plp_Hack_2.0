@@ -804,12 +804,18 @@ html, body {
   .header {
     height: auto;
     padding: 0.4rem 0;
+    margin-right: 0;
   }
 
   
 
   /* Top bar: make head-1 compact */
-  #head-1 { height: auto; padding: 0.4rem 0.6rem; }
+  #head-1 { height: auto; 
+           padding: 0.4rem 0.6rem; 
+           width: 96.3%;
+  }
+
+
   #head-1 p { font-size: 0.95rem; margin: 0; }
 
   /* Head-2: stack brand / search / CTA vertically */
