@@ -160,22 +160,46 @@ html, body {
 
 
 .section-1 {
-    grid-area: section-1;
-    background-image: url("static/img/brown-chickens-farm.jpg"); /* first image */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: #ffffff;
-    background-color: #3b2a1a; /* fallback color */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 2rem;
-    min-height: 70vh;
-    transition: background-image 1s ease-in-out; /* smooth transition */
+  grid-area: section-1;
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+  background-color: #3b2a1a; /* fallback color */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  min-height: 70vh;
 }
+
+
+.section-1 h1,
+.section-1 p {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* the two stacked layers used for crossfading */
+.section-1 .slide-layer {
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
+  will-change: opacity, background-image;
+  pointer-events: none;
+}
+
+/* visible layer */
+.section-1 .slide-layer.visible {
+  opacity: 1;
+}
+
 
 .section-1 h1 {
     color: white;

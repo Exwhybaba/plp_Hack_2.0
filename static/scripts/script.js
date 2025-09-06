@@ -1,27 +1,55 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const section = document.querySelector(".section-1");
+  const section = document.querySelector(".section-1");
 
-    const images = [
-        "static/img/brown-chickens-farm.jpg", // already visible in CSS
-        "static/img/b-cole-tZDQqzD3EqI-unsplash.jpg",
-        "static/img/muhammad-qasim-ali-NddUYwQ_7xI-unsplash.jpg",
-        "static/img/tattooed-roaster-hand-holds-metal-scoop-with-raw-fresh-green-coffee-beans-plastic-basket.jpg",
-    ];
+  const images = [
+    "static/img/brown-chickens-farm.jpg",
+    "static/img/b-cole-tZDQqzD3EqI-unsplash.jpg",
+    "static/img/muhammad-qasim-ali-NddUYwQ_7xI-unsplash.jpg",
+    "static/img/tattooed-roaster-hand-holds-metal-scoop-with-raw-fresh-green-coffee-beans-plastic-basket.jpg",
+  ];
 
-    let index = 0;
+  // Preload images (good practice)
+  images.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
 
-    // Preload images
-    images.forEach(src => {
-        const img = new Image();
-        img.src = src;
-    });
+  // Create two layer divs for crossfade
+  const layerA = document.createElement("div");
+  const layerB = document.createElement("div");
+  layerA.className = "slide-layer visible";
+  layerB.className = "slide-layer";
+  // start with first image visible
+  layerA.style.backgroundImage = `url('${images[0]}')`;
+  section.appendChild(layerA);
+  section.appendChild(layerB);
 
-    // Start slideshow (begin with 2nd image, not blank)
-    setInterval(() => {
-        index = (index + 1) % images.length;
-        section.style.backgroundImage = `url('${images[index]}')`;
-    }, 3000);
+  let index = 0;
+  let topIsA = true;
+  const duration = 3000; // ms between slides
+
+  setInterval(() => {
+    const nextIndex = (index + 1) % images.length;
+    const top = topIsA ? layerA : layerB;
+    const bottom = topIsA ? layerB : layerA;
+
+    // put next image on the bottom (currently hidden) layer
+    bottom.style.backgroundImage = `url('${images[nextIndex]}')`;
+
+    // force a reflow in some browsers to ensure transition runs
+    // eslint-disable-next-line no-unused-expressions
+    bottom.offsetHeight;
+
+    // fade bottom in, fade top out
+    bottom.classList.add("visible");
+    top.classList.remove("visible");
+
+    // flip the "top" pointer after the transition
+    topIsA = !topIsA;
+    index = nextIndex;
+  }, duration);
 });
+
 
 
 // script.js - single clean modal + signup handler (client validation)
